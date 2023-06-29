@@ -2,22 +2,22 @@ import { IsNumber, IsString, IsEmail, IsBoolean } from 'class-validator';
 
 export class UserDTO {
   
-    @IsString()
+    @IsString({message: "firstName type date not valid"})
     firstName: string;
   
-    @IsString()
+    @IsString({message: "lastName type date not valid"})
     lastName: string;
   
-    @IsEmail()
+    @IsEmail({})
     email: string;
   
-    @IsString()
+    @IsString({message: "lastName type date not valid"})
     password: string;
   
-    @IsString()
+    @IsString({message: "movil type date not valid"})
     movil: string;
   
-    @IsBoolean()
+    @IsBoolean({message: "isActive type date not valid"})
     isActive: boolean;
   }
   

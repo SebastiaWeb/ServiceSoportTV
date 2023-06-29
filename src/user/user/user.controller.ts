@@ -15,7 +15,13 @@ export class UserController {
 
     @Post()
     async createUser(@Body() createUser: UserDTO){
-      console.log(createUser)
-      this.userService.createUser(createUser);
+      try {
+        
+        let UserResponse = await this.userService.createUser(createUser);
+
+        return {"status": 200, "response":"Create with success", UserResponse};
+      } catch (error) {
+        return {"status": 502, "response":"Error the save"};
+      }
     }
 }
