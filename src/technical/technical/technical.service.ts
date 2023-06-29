@@ -2,24 +2,21 @@ import { Injectable } from '@nestjs/common';
 import { TechnicalRepository } from '../entities/technical.repository';
 import { TechnicalDTO } from '../dto/technical.dto';
 import { TechnicalEntity } from '../entities/technical.entity';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class TechnicalService {
-    private userRepository: TechnicalRepository;
 
-    constructor() {
-      this.userRepository = new TechnicalRepository();
-    }
+    constructor(
+      @InjectRepository(TechnicalEntity) private __tecnical: Repository<TechnicalEntity>) {}
   
-    async createUser(userDto: TechnicalDTO): Promise<TechnicalEntity> {
+    async createUser(technicalDto: TechnicalDTO): Promise<TechnicalEntity> {
+      
+      const technical = this.__tecnical.create(technicalDto)
+
+      const createdTechnical = await this.__tecnical.save(technical);
   
-      const user = new TechnicalEntity();
-  
-      user.id = userDto.id;
-      user.id_user = userDto.id_user;
-  
-      const createdUser = await this.userRepository.save(user);
-  
-      return createdUser;
+      return createdTechnical;
     }
 }
