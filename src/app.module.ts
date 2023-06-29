@@ -4,7 +4,11 @@ import { AppService } from './app.service';
 
 // BD
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { UserModule } from './user/user/user.module';
+import { UserModule } from './user/user.module';
+import { ClientModule } from './client/client.module';
+import { TechnicalModule } from './technical/technical.module';
+import { ServicesSoportModule } from './services_soport/services_soport.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -15,10 +19,14 @@ import { UserModule } from './user/user/user.module';
       username: 'postgres',
       password: 'smartinfo',
       database: 'ServiceSoportTV',
-      entities: ['dist/**/*.entities{.ts, .js}'],
+      entities:  ['dist/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
     UserModule,
+    TechnicalModule,
+    ClientModule,
+    ServicesSoportModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

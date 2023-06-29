@@ -11,6 +11,15 @@ export class User {
   @Column()
   lastName: string;
 
+  @Column()
+  email: string;
+
+  @Column()
+  password: string;
+
+  @Column()
+  movil: string;
+
   @Column({ default: true })
   isActive: boolean;
 }
