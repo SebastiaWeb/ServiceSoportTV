@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, OneToOne, JoinColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, OneToOne, JoinColumn, Column } from 'typeorm';
 import {User} from '../../user/entities/user.entity';
 
 @Entity()
@@ -10,5 +10,8 @@ export class TechnicalEntity{
     @OneToOne(()=> User)
     @JoinColumn()
     id_user: number
+
+    @Column()
+    rol: string
 
 }

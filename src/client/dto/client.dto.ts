@@ -1,4 +1,4 @@
-import { IsNumber } from 'class-validator';
+import { IsNumber, IsString } from 'class-validator';
 
 export class ClientDTO {
     @IsNumber()
@@ -6,4 +6,7 @@ export class ClientDTO {
   
     @IsNumber()
     id_user: number;
+
+    @IsString()
+    street: string;
   }

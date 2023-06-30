@@ -1,4 +1,4 @@
-import { IsNumber } from 'class-validator';
+import { IsNumber, IsString } from 'class-validator';
 
 export class TechnicalDTO {
     @IsNumber()
@@ -6,4 +6,7 @@ export class TechnicalDTO {
   
     @IsNumber()
     id_user: number;
+
+    @IsString()
+    rol: string
   }

@@ -1,20 +1,34 @@
+import { Repository } from 'typeorm';
 import { ClientEntity } from './client.entity';
 
 export class ClientRepository {
-  private client: ClientEntity[];
 
-  constructor() {
-    this.client = [];
+  constructor(private __client: Repository<ClientEntity>) {
+    
   }
 
   async save(client: ClientEntity): Promise<ClientEntity> {
-    const generatedId = Date.now();
 
-    client.id = generatedId;
+    this.__client.create(client);
 
-    this.client.push(client);
+    this.__client.save(client);
 
     return client;
   }
 
+  async update(id: number, client: ClientEntity): Promise<ClientEntity>{
+    this.__client.update({ id: id}, client);
+
+    return client;
+  }
+
+  async delete(id:number){
+    try {
+      
+      this.__client.delete({id: id});
+
+    } catch (error) {
+      console.error('Error: Delete user');
+    }
+  }
 }

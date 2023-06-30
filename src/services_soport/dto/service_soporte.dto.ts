@@ -1,14 +1,13 @@
+import { ApiProperty } from '@nestjs/swagger';
 import { IsNumber, IsString, IsDate } from 'class-validator';
 
 export class ServiceSoportDTO {
 
     @IsNumber()
-    id: number
-
-    @IsNumber()
     id_technical: number
 
     @IsNumber()
+    @ApiProperty()
     id_client: number
 
     @IsString()
