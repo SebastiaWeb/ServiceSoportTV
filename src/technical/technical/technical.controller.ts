@@ -11,9 +11,15 @@ export class TechnicalController {
 
     }
 
-    @Get()
-    async getTechnical(){
-
+    @Get('/:id')
+    async getSoport(@Param('id') id:number){
+      try {
+        
+        return await this.__technical.getSuports(id)
+      } catch (error) {
+        console.log(error);
+        
+      }
     }
 
     @Post()

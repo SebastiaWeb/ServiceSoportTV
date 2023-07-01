@@ -3,12 +3,17 @@ import { ClientDTO } from 'src/client/dto/client.dto';
 import { ServiceSoportDTO } from '../dto/service_soporte.dto';
 import { ServicesSoportService } from './services_soport.service';
 import { ApiOperation, ApiQuery, ApiTags } from '@nestjs/swagger';
+import { TechnicalService } from 'src/technical/technical/technical.service';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import {TechnicalRepository} from 'src/technical/entities/technical.repository';
 
 @ApiTags('Service and Ticket')
 @Controller('services-soport')
 export class ServicesSoportController {
 
-    constructor(private __serviceSoport: ServicesSoportService){
+    constructor(private __serviceSoport: ServicesSoportService
+      ){
 
     }
 
@@ -29,7 +34,7 @@ export class ServicesSoportController {
             return { "status": 502, "response": "Error the save: "+error };
           }
     }
-
+  
     @ApiOperation({ summary: 'Generate ticket', description: 'Genera the ticket and solicitud' })
     @Post()
     async createTechnical(@Body() createServiceSoportDTO: ServiceSoportDTO){

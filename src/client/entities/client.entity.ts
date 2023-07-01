@@ -1,7 +1,7 @@
 import {User} from '../../user/entities/user.entity';
 import { Entity, PrimaryGeneratedColumn, OneToOne, JoinColumn, Column } from 'typeorm';
 
-@Entity()
+@Entity('Client')
 export class ClientEntity{
 
     @PrimaryGeneratedColumn()

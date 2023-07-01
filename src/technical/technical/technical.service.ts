@@ -24,6 +24,18 @@ export class TechnicalService {
     return createdTechnical;
   }
 
+  async getSuports(id:number){
+    try {
+      const soports = await this.__tecnical.find({
+        relations: ['ServiceSoport'],
+        where:{id}
+      });
+      return soports;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   async updateTechnical(id: number, technicalDto: TechnicalDTO): Promise<TechnicalDTO> {
 
     try {
